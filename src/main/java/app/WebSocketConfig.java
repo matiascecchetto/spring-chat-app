@@ -29,6 +29,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
 
+      registry.setApplicationDestinationPrefixes("/chat");
+
       // registry.enableStompBrokerRelay("/topic")
       //         .setRelayHost("furry-pipkin-43.bigwig.lshift.net")
       //         .setVirtualHost("g0dTtITeQ9Ag")
@@ -44,15 +46,13 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
               .setClientLogin(login)
               .setClientPasscode(passcode);
 
-      registry.setApplicationDestinationPrefixes("/chat");
-
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
         // To enable CORS
-        .setAllowedOrigins("*")
+        // .setAllowedOrigins("*")
         .withSockJS();
         // The .setWebSocketEnabled(false) disables WebSockets in order to use XHR-Long Pooling
         // registry.addEndpoint("/ws").withSockJS().setWebSocketEnabled(false);
