@@ -40,11 +40,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
       // Use this for enabling a Full featured broker like RabbitMQ
       registry.enableStompBrokerRelay("/topic")
-              .setRelayHost(host)
+              .setRelayHost("skunk.rmq.cloudamqp.com")
               // .setVirtualHost("/chat")
-              .setRelayPort(port)
-              .setClientLogin(login)
-              .setClientPasscode(passcode);
+              .setRelayPort(61613)
+              .setClientLogin("temmwemj")
+              .setClientPasscode("v5D6v4n_QzgCnZ-fP8hPP99CrgsKDV5J");
 
     }
 
