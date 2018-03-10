@@ -52,7 +52,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
         // To enable CORS
-        // .setAllowedOrigins("*")
+        .setAllowedOrigins("*")
         .withSockJS();
         // The .setWebSocketEnabled(false) disables WebSockets in order to use XHR-Long Pooling
         // registry.addEndpoint("/ws").withSockJS().setWebSocketEnabled(false);
