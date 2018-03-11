@@ -25,27 +25,22 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		private String login;
     @Value("${spring.rabbitmq.password}")
 		private String passcode;
+    @Value("${spring.rabbitmq.vhost}")
+		private String vhost;
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
 
       registry.setApplicationDestinationPrefixes("/chat");
-
-      // registry.enableStompBrokerRelay("/topic")
-      //         .setRelayHost("furry-pipkin-43.bigwig.lshift.net")
-      //         .setVirtualHost("g0dTtITeQ9Ag")
-      //         .setRelayPort(10410)
-      //         .setClientLogin("AyGEPF8v")
-      //         .setClientPasscode("IGJDhxDhZtctiH9Pje1JgnH0AcYbNx-g");
-
       // Use this for enabling a Full featured broker like RabbitMQ
       registry.enableStompBrokerRelay("/topic")
               .setRelayHost(host)
-              // .setVirtualHost("/chat")
+              .setVirtualHost(vhost)
               .setRelayPort(port)
               .setClientLogin(login)
-              .setClientPasscode(passcode);
-
+              .setClientPasscode(passcode)
+              .setSystemLogin(login)
+              .setSystemPasscode(passcode);
     }
 
     @Override
